@@ -131,15 +131,12 @@ function hasta_settings_page() {
     ?>
     <div class="wrap">
       <h1>Hasta Aksara — Settings</h1>
-      <p style="color:#666;margin-bottom:20px;">
-        Logo utama (kiri) diatur di <a href="<?php echo esc_url( admin_url( 'customize.php?autofocus[section]=title_tagline' ) ); ?>">Appearance → Customize → Site Identity</a>.
-      </p>
       <form method="post" action="options.php">
         <?php settings_fields( 'hasta_options' ); ?>
         <table class="form-table" role="presentation">
 
           <tr>
-            <th scope="row"><label>Logo IKPM Gontor <br><small style="font-weight:normal;color:#888;">(kanan header)</small></label></th>
+            <th scope="row"><label>Logo Kanan Header</label></th>
             <td>
               <?php if ( $logo_right ) : ?>
                 <img id="prev_hasta_logo_right" src="<?php echo esc_url( $logo_right ); ?>"
@@ -156,7 +153,7 @@ function hasta_settings_page() {
                 <button class="button hasta-media-remove" data-target="hasta_logo_right" data-preview="prev_hasta_logo_right"
                         style="margin-left:4px;">Hapus</button>
               <?php endif; ?>
-              <p class="description">Jika diisi, menggantikan tulisan "IKPM GONTOR" di kanan header. Gunakan PNG/SVG dengan background transparan.</p>
+              <p class="description">Logo partner di kanan header (PNG/SVG transparan). Jika kosong, tampil teks Teks Kanan Header.</p>
             </td>
           </tr>
 
@@ -165,7 +162,7 @@ function hasta_settings_page() {
             <td>
               <input type="text" name="hasta_tagline_right" value="<?php echo esc_attr( $tagline ); ?>"
                      class="regular-text" placeholder="IKPM  GONTOR">
-              <p class="description">Teks fallback jika Logo Kanan tidak diisi. Default: IKPM GONTOR</p>
+              <p class="description">Fallback jika Logo Kanan kosong. Default: IKPM GONTOR</p>
             </td>
           </tr>
 
@@ -197,7 +194,7 @@ function hasta_settings_page() {
               <input type="url" id="hasta_instagram" name="hasta_instagram"
                      value="<?php echo esc_attr( $instagram ); ?>"
                      class="regular-text" placeholder="https://instagram.com/hastaaksara">
-              <p class="description">Tampil sebagai icon Instagram di footer. Contoh: https://instagram.com/hastaaksara</p>
+              <p class="description">Icon Instagram di footer.</p>
             </td>
           </tr>
 
@@ -207,7 +204,7 @@ function hasta_settings_page() {
               <input type="text" id="hasta_footer_copyright" name="hasta_footer_copyright"
                      value="<?php echo esc_attr( $footer_copyright ); ?>"
                      class="regular-text" placeholder="© <?php echo esc_attr( gmdate('Y') ); ?> Hasta Aksara">
-              <p class="description">Kosongkan untuk menggunakan default: <code>© <?php echo esc_html( gmdate('Y') ); ?> <?php bloginfo('name'); ?></code></p>
+              <p class="description">Kosongkan untuk default: <code>© <?php echo esc_html( gmdate('Y') ); ?> <?php bloginfo('name'); ?></code></p>
             </td>
           </tr>
 
@@ -215,7 +212,6 @@ function hasta_settings_page() {
         <?php submit_button( 'Simpan Settings' ); ?>
       </form>
 
-      <!-- ── Update Theme ── -->
       <hr style="margin:30px 0;">
       <h2>Update Theme</h2>
       <?php hasta_updater_section(); ?>
@@ -735,75 +731,3 @@ function hasta_register_acf_fields() {
 }
 add_action( 'acf/init', 'hasta_register_acf_fields' );
 
-// ─── ACF Options Page ─────────────────────────────────────
-function hasta_register_options_page() {
-    if ( ! function_exists( 'acf_add_options_page' ) ) return;
-
-    acf_add_options_page( [
-        'page_title'  => 'Hasta Aksara — Settings',
-        'menu_title'  => 'Hasta Aksara',
-        'menu_slug'   => 'hasta-aksara-settings',
-        'capability'  => 'manage_options',
-        'icon_url'    => 'dashicons-editor-textcolor',
-        'position'    => 3,
-        'redirect'    => false,
-    ] );
-}
-add_action( 'acf/init', 'hasta_register_options_page' );
-
-function hasta_register_options_fields() {
-    if ( ! function_exists( 'acf_add_local_field_group' ) ) return;
-
-    acf_add_local_field_group( [
-        'key'    => 'group_hasta_theme_options',
-        'title'  => 'Hasta Aksara — Theme Options',
-        'fields' => [
-            // ── Logo ──
-            [
-                'key'           => 'field_hasta_logo',
-                'label'         => 'Logo Hasta Aksara',
-                'name'          => 'hasta_logo',
-                'type'          => 'image',
-                'return_format' => 'array',
-                'preview_size'  => 'medium',
-                'instructions'  => 'Upload logo (PNG/SVG transparan). Prioritas di atas WordPress Custom Logo. Kosongkan untuk pakai WP Custom Logo atau fallback teks.',
-            ],
-            // ── Ornament ──
-            [
-                'key'           => 'field_hasta_ornament',
-                'label'         => 'Background Ornament',
-                'name'          => 'hasta_ornament',
-                'type'          => 'image',
-                'return_format' => 'array',
-                'preview_size'  => 'medium',
-                'instructions'  => 'Upload gambar ornamen background (SVG atau PNG transparan). Kosongkan untuk pakai ornament default dari theme.',
-            ],
-            // ── Logo kanan header (partner/organisasi) ──
-            [
-                'key'           => 'field_hasta_logo_right',
-                'label'         => 'Logo Kanan Header',
-                'name'          => 'hasta_logo_right',
-                'type'          => 'image',
-                'return_format' => 'array',
-                'preview_size'  => 'medium',
-                'instructions'  => 'Upload logo partner/organisasi (misal: logo IKPM Gontor). Jika diisi, menggantikan teks di kanan header. Format PNG/SVG transparan.',
-            ],
-            // ── Teks kanan header (fallback jika logo_right kosong) ──
-            [
-                'key'           => 'field_hasta_tagline_right',
-                'label'         => 'Teks Kanan Header',
-                'name'          => 'hasta_tagline_right',
-                'type'          => 'text',
-                'default_value' => 'IKPM  GONTOR',
-                'instructions'  => 'Teks fallback jika Logo Kanan Header kosong. Default: IKPM  GONTOR',
-            ],
-        ],
-        'location' => [
-            [ [ 'param' => 'options_page', 'operator' => '==', 'value' => 'hasta-aksara-settings' ] ],
-        ],
-        'menu_order'      => 0,
-        'style'           => 'default',
-        'label_placement' => 'top',
-    ] );
-}
-add_action( 'acf/init', 'hasta_register_options_fields' );
