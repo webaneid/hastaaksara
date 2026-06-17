@@ -5,8 +5,8 @@
 $instagram_url = get_option( 'hasta_instagram' ) ?: 'https://instagram.com/hastaaksara';
 ?>
 
-<footer class="border-t border-dark/10 py-6 px-6 lg:px-16 flex items-center justify-between gap-4">
-  <p class="font-mono text-[10px] tracking-[0.18em] uppercase text-dark/35">
+<footer class="border-t border-dark/10 py-6 px-6 lg:px-16 flex items-center justify-between gap-4 text-[16px]">
+  <p class="font-monotracking-[0.18em] uppercase text-dark/35">
     &copy; <?php echo esc_html( gmdate( 'Y' ) ); ?> <?php bloginfo( 'name' ); ?>
   </p>
   <a href="<?php echo esc_url( $instagram_url ); ?>"
@@ -21,7 +21,7 @@ $instagram_url = get_option( 'hasta_instagram' ) ?: 'https://instagram.com/hasta
       <circle cx="12" cy="12" r="4"/>
       <circle cx="17.5" cy="6.5" r="0.5" fill="currentColor" stroke="none"/>
     </svg>
-    <span class="font-mono text-[10px] tracking-[0.18em] uppercase text-dark/35 group-hover:text-dark transition-colors">
+    <span class="font-monotracking-[0.18em] uppercase text-dark/35 group-hover:text-dark transition-colors">
       <?php
         // Ambil username dari URL: https://instagram.com/hastaaksara → @hastaaksara
         $handle = rtrim( parse_url( $instagram_url, PHP_URL_PATH ), '/' );

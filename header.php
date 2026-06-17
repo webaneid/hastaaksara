@@ -23,7 +23,7 @@ $is_front      = is_front_page() && ! is_paged();
   <link rel="canonical" href="<?php echo esc_url( $canonical_url ); ?>">
   <?php wp_head(); ?>
 </head>
-<body <?php body_class( 'bg-white antialiased' ); ?>>
+<body <?php body_class( 'bg-white antialiased font-gontor' ); ?>>
 <?php wp_body_open(); ?>
 
 <!-- ── Fixed header overlay ─────────────────────────────── -->

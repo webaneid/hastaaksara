@@ -18,10 +18,10 @@
   // ── Weight selector ─────────────────────────────────────
   function activateWeight( btn ) {
     weightBtns.forEach( function (b) {
-      b.classList.remove( 'bg-dark', 'text-white', 'border-dark' );
+      b.classList.remove( 'bg-primary', 'text-white', 'border-primary' );
       b.classList.add( 'border-dark/20' );
     } );
-    btn.classList.add( 'bg-dark', 'text-white', 'border-dark' );
+    btn.classList.add( 'bg-primary', 'text-white', 'border-primary' );
     btn.classList.remove( 'border-dark/20' );
     currentWeight = btn.dataset.weight;
     preview.style.fontWeight = currentWeight;
@@ -39,9 +39,9 @@
     italicBtn.addEventListener( 'click', function () {
       currentStyle = currentStyle === 'normal' ? 'italic' : 'normal';
       preview.style.fontStyle = currentStyle;
-      italicBtn.classList.toggle( 'bg-dark',   currentStyle === 'italic' );
-      italicBtn.classList.toggle( 'text-white', currentStyle === 'italic' );
-      italicBtn.classList.toggle( 'border-dark', currentStyle === 'italic' );
+      italicBtn.classList.toggle( 'bg-primary',     currentStyle === 'italic' );
+      italicBtn.classList.toggle( 'text-white',     currentStyle === 'italic' );
+      italicBtn.classList.toggle( 'border-primary', currentStyle === 'italic' );
     } );
   }
 
@@ -52,7 +52,10 @@
       preview.style.background = darkBg ? '#1A1A1A' : '';
       preview.style.color      = darkBg ? '#FFFFFF' : '';
       preview.style.padding    = darkBg ? '24px' : '';
-      bgBtn.textContent        = darkBg ? 'Light' : 'Dark';
+      bgBtn.textContent = darkBg ? 'Light' : 'Dark';
+      bgBtn.classList.toggle( 'bg-primary',     darkBg );
+      bgBtn.classList.toggle( 'text-white',     darkBg );
+      bgBtn.classList.toggle( 'border-primary', darkBg );
     } );
   }
 

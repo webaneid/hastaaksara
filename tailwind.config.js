@@ -13,6 +13,7 @@ module.exports = {
       },
       fontFamily: {
         gontor: ['Gontor', 'Georgia', 'serif'],
+        mono:   ['Gontor', 'Georgia', 'serif'],
       },
     },
   },

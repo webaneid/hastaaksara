@@ -98,7 +98,7 @@ if ( $has_font ) {
       <?php if ( $font_license_text ) : ?>
       <div class="flex-1">
         <p class="font-mono text-[16px] leading-[1.9] text-dark/50">
-          <?php echo nl2br( esc_html( $font_license_text ) ); ?>
+          <?php echo wp_kses( hasta_linkify( $font_license_text ), [ 'a' => [ 'href' => [], 'target' => [], 'rel' => [], 'class' => [] ], 'br' => [] ] ); ?>
         </p>
       </div>
       <?php endif; ?>

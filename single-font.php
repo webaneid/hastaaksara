@@ -188,7 +188,7 @@ $styles_count = count( $weights ) * 2; // upright + italic
           <?php endif; ?>
           <?php if ( $license_text ) : ?>
             <p class="font-mono leading-[1.85] text-dark/40">
-              <?php echo nl2br( esc_html( $license_text ) ); ?>
+              <?php echo wp_kses( hasta_linkify( $license_text ), [ 'a' => [ 'href' => [], 'target' => [], 'rel' => [], 'class' => [] ], 'br' => [] ] ); ?>
             </p>
           <?php endif; ?>
         </div>
@@ -244,7 +244,7 @@ $styles_count = count( $weights ) * 2; // upright + italic
           <?php foreach ( $weight_labels as $weight => $label ) :
             if ( ! in_array( (string) $weight, $weights, true ) ) continue; ?>
             <button type="button"
-                    class="font-monotracking-[0.1em] uppercase px-3 py-1.5 border border-dark/20 hover:border-dark transition-colors"
+                    class="font-mono tracking-[0.1em] uppercase px-3 py-1.5 border border-dark/20 hover:border-dark transition-colors"
                     data-weight="<?php echo esc_attr( $weight ); ?>">
               <?php echo esc_html( $label ); ?>
             </button>
@@ -254,12 +254,12 @@ $styles_count = count( $weights ) * 2; // upright + italic
         <!-- Right controls -->
         <div class="flex items-center gap-2 ml-auto flex-wrap">
           <button type="button"
-                  class="font-monotracking-[0.1em] uppercase px-3 py-1.5 border border-dark/20 hover:border-dark italic transition-colors"
+                  class="font-mono tracking-[0.1em] uppercase px-3 py-1.5 border border-dark/20 hover:border-dark italic transition-colors"
                   data-italic-toggle>
             Italic
           </button>
           <button type="button"
-                  class="font-monotracking-[0.1em] uppercase px-3 py-1.5 border border-dark/20 hover:border-dark transition-colors"
+                  class="font-mono tracking-[0.1em] uppercase px-3 py-1.5 border border-dark/20 hover:border-dark transition-colors"
                   data-bg-toggle>
             Dark
           </button>

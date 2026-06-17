@@ -20,6 +20,17 @@ if ( ! function_exists( 'get_field' ) ) {
     }
 }
 
+// Convert URL dalam teks plain menjadi <a> tag
+function hasta_linkify( $text ) {
+    $escaped = esc_html( $text );
+    $linked  = preg_replace(
+        '#(https?://[^\s<>"\']+)#i',
+        '<a href="$1" target="_blank" rel="noopener noreferrer" class="text-primary underline hover:opacity-70 transition-opacity">$1</a>',
+        $escaped
+    );
+    return nl2br( $linked );
+}
+
 // Izinkan upload ZIP di media library
 add_filter( 'upload_mimes', function ( $mimes ) {
     $mimes['zip'] = 'application/zip';
