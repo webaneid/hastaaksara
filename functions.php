@@ -2,20 +2,23 @@
 
 require get_template_directory() . '/inc/github-updater.php';
 
-// Shim get_field() — hanya jalan jika ACF Pro tidak aktif.
-// Dibungkus plugins_loaded agar ACF Pro sempat define duluan,
-// mencegah fatal error "Cannot redeclare get_field()" saat aktivasi.
-add_action( 'plugins_loaded', function () {
-    if ( function_exists( 'get_field' ) ) return;
+// Shim get_field() — hanya aktif jika ACF tidak terinstall sama sekali.
+// Cek file di disk (bukan function_exists) agar tidak konflik saat aktivasi ACF:
+// saat aktivasi, ACF belum di active_plugins tapi filenya sudah ada.
+if ( ! function_exists( 'get_field' ) ) {
+    $acf_exists = file_exists( WP_PLUGIN_DIR . '/advanced-custom-fields-pro/acf.php' )
+               || file_exists( WP_PLUGIN_DIR . '/advanced-custom-fields/acf.php' );
 
-    function get_field( $field, $post_id = false ) {
-        if ( 'option' === $post_id || 'options' === $post_id ) {
-            return get_option( 'options_' . $field );
+    if ( ! $acf_exists ) {
+        function get_field( $field, $post_id = false ) {
+            if ( 'option' === $post_id || 'options' === $post_id ) {
+                return get_option( 'options_' . $field );
+            }
+            $id = $post_id ?: get_the_ID();
+            return maybe_unserialize( get_post_meta( $id, $field, true ) );
         }
-        $id  = $post_id ?: get_the_ID();
-        return maybe_unserialize( get_post_meta( $id, $field, true ) );
     }
-}, 0 );
+}
 
 // Izinkan upload ZIP di media library
 add_filter( 'upload_mimes', function ( $mimes ) {
