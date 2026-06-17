@@ -95,52 +95,79 @@ function hasta_github_clear_after_update( $upgrader, $hook_extra ) {
     }
 }
 
-// ── 3. Admin notice di Appearance > Themes ───────────────────────
+// ── 3. Update section (dipanggil dari hasta_settings_page) ───────
 
-add_action( 'admin_notices', 'hasta_github_admin_notice' );
-
-function hasta_github_admin_notice() {
-    $screen = get_current_screen();
-    if ( ! $screen || $screen->id !== 'themes' ) return;
-    if ( ! current_user_can( 'update_themes' ) ) return;
+function hasta_updater_section() {
+    if ( ! current_user_can( 'manage_options' ) ) return;
 
     $release     = hasta_github_get_release();
     $current     = wp_get_theme( HASTA_THEME_SLUG )->get( 'Version' );
     $latest      = $release ? ltrim( $release->tag_name, 'v' ) : null;
     $has_update  = $latest && version_compare( $latest, $current, '>' );
+    $release_url = $release->html_url ?? ( 'https://github.com/' . HASTA_GITHUB_USER . '/' . HASTA_GITHUB_REPO . '/releases' );
     $check_url   = wp_nonce_url(
-        add_query_arg( 'hasta_check_update', '1', admin_url( 'themes.php' ) ),
+        add_query_arg( 'hasta_check_update', '1', admin_url( 'admin.php?page=hasta-aksara-settings' ) ),
         'hasta_check_update'
     );
-    $release_url = $release->html_url ?? ( 'https://github.com/' . HASTA_GITHUB_USER . '/' . HASTA_GITHUB_REPO . '/releases' );
     $cache_ttl   = get_option( '_transient_timeout_' . HASTA_UPDATE_CACHE_KEY );
-    $cache_info  = $cache_ttl ? human_time_diff( time(), (int) $cache_ttl ) : null;
-
-    $type = $has_update ? 'notice-warning' : 'notice-info';
+    $next_check  = $cache_ttl ? human_time_diff( time(), (int) $cache_ttl ) : null;
     ?>
-    <div class="notice <?php echo esc_attr( $type ); ?>" style="display:flex;align-items:center;gap:20px;flex-wrap:wrap;padding:10px 14px;">
-      <strong style="font-size:13px;">Hasta Aksara</strong>
+    <div style="background:#fff;border:1px solid #c3c4c7;padding:20px 24px;max-width:600px;">
+      <table class="form-table" style="margin-top:0;">
+          <tr>
+            <th style="width:160px;">Versi saat ini</th>
+            <td><strong>v<?php echo esc_html( $current ); ?></strong></td>
+          </tr>
+          <tr>
+            <th>Versi terbaru</th>
+            <td>
+              <?php if ( $latest ) : ?>
+                <strong>v<?php echo esc_html( $latest ); ?></strong>
+                <?php if ( $has_update ) : ?>
+                  &nbsp;<span style="color:#d63638;">● Update tersedia</span>
+                  &nbsp;<a href="<?php echo esc_url( $release_url ); ?>" target="_blank" rel="noopener noreferrer">Lihat changelog</a>
+                <?php else : ?>
+                  &nbsp;<span style="color:#46b450;">✓ Sudah terbaru</span>
+                <?php endif; ?>
+              <?php else : ?>
+                <span style="color:#888;">Tidak dapat terhubung ke GitHub</span>
+              <?php endif; ?>
+            </td>
+          </tr>
+          <?php if ( $next_check ) : ?>
+          <tr>
+            <th>Cache update</th>
+            <td style="color:#888;font-size:13px;">
+              Diperbarui otomatis dalam <?php echo esc_html( $next_check ); ?>
+            </td>
+          </tr>
+          <?php endif; ?>
+          <tr>
+            <th>Repository</th>
+            <td>
+              <a href="https://github.com/<?php echo esc_attr( HASTA_GITHUB_USER . '/' . HASTA_GITHUB_REPO ); ?>" target="_blank" rel="noopener noreferrer">
+                github.com/<?php echo esc_html( HASTA_GITHUB_USER . '/' . HASTA_GITHUB_REPO ); ?>
+              </a>
+            </td>
+          </tr>
+        </table>
 
-      <span style="font-size:13px;">
-        <?php if ( $has_update ) : ?>
-          Update tersedia: <strong>v<?php echo esc_html( $latest ); ?></strong>
-          &mdash; kamu di v<?php echo esc_html( $current ); ?>.
-          <a href="<?php echo esc_url( $release_url ); ?>" target="_blank" rel="noopener noreferrer">Lihat changelog &rarr;</a>
-        <?php elseif ( $latest ) : ?>
-          Versi terbaru — <strong>v<?php echo esc_html( $current ); ?></strong>
-        <?php else : ?>
-          Tidak dapat terhubung ke GitHub.
-        <?php endif; ?>
-      </span>
-
-      <a href="<?php echo esc_url( $check_url ); ?>" style="font-size:12px;text-decoration:none;color:#2271b1;white-space:nowrap;">
-        ↻ Periksa Update<?php if ( $cache_info ) echo ' <span style="color:#999;font-size:11px;">(cache: ' . esc_html( $cache_info ) . ')</span>'; ?>
-      </a>
+        <p style="margin-bottom:0;">
+          <a href="<?php echo esc_url( $check_url ); ?>" class="button button-secondary">
+            ↻ Periksa Update Sekarang
+          </a>
+          <?php if ( $has_update ) : ?>
+            &nbsp;
+            <a href="<?php echo esc_url( admin_url( 'update-core.php' ) ); ?>" class="button button-primary">
+              Pergi ke Halaman Update
+            </a>
+          <?php endif; ?>
+        </p>
     </div>
     <?php
 }
 
-// ── 4. Handle tombol "Periksa Update" ────────────────────────────
+// ── 4. Handle tombol "Periksa Update Sekarang" ───────────────────
 
 add_action( 'admin_init', 'hasta_github_handle_check' );
 
@@ -150,9 +177,8 @@ function hasta_github_handle_check() {
     if ( ! check_admin_referer( 'hasta_check_update' ) ) return;
 
     delete_transient( HASTA_UPDATE_CACHE_KEY );
-    // Hapus juga WP core update transient agar re-check
     delete_site_transient( 'update_themes' );
 
-    wp_safe_redirect( admin_url( 'themes.php' ) );
+    wp_safe_redirect( admin_url( 'admin.php?page=hasta-aksara-settings' ) );
     exit;
 }

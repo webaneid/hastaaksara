@@ -203,6 +203,12 @@ function hasta_settings_page() {
         </table>
         <?php submit_button( 'Simpan Settings' ); ?>
       </form>
+
+      <!-- ── Update Theme ── -->
+      <hr style="margin:30px 0;">
+      <h2>Update Theme</h2>
+      <?php hasta_updater_section(); ?>
+
     </div>
     <?php
 }
