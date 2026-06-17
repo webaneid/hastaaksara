@@ -214,17 +214,18 @@ function hasta_settings_page() {
 }
 
 function hasta_enqueue_assets() {
+    $ver = wp_get_theme()->get( 'Version' );
     wp_enqueue_style(
         'hasta-style',
         get_template_directory_uri() . '/assets/css/style.css',
         [],
-        '0.1.0'
+        $ver
     );
     wp_enqueue_script(
         'hasta-main',
         get_template_directory_uri() . '/assets/js/main.js',
         [],
-        '0.1.0',
+        $ver,
         true
     );
     if ( is_singular( 'font' ) ) {
@@ -232,7 +233,7 @@ function hasta_enqueue_assets() {
             'hasta-font-preview',
             get_template_directory_uri() . '/assets/js/font-preview.js',
             [],
-            '0.1.0',
+            $ver,
             true
         );
     }
@@ -241,7 +242,7 @@ function hasta_enqueue_assets() {
             'hasta-font-browse',
             get_template_directory_uri() . '/assets/js/font-browse.js',
             [],
-            '0.1.0',
+            $ver,
             true
         );
     }
