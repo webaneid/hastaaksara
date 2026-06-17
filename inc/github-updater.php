@@ -95,59 +95,48 @@ function hasta_github_clear_after_update( $upgrader, $hook_extra ) {
     }
 }
 
-// ── 3. UI di Appearance > Themes ─────────────────────────────────
+// ── 3. Admin notice di Appearance > Themes ───────────────────────
 
-add_action( 'after_theme_row_' . HASTA_THEME_SLUG, 'hasta_github_update_row', 10, 2 );
+add_action( 'admin_notices', 'hasta_github_admin_notice' );
 
-function hasta_github_update_row( $stylesheet, $theme ) {
+function hasta_github_admin_notice() {
+    $screen = get_current_screen();
+    if ( ! $screen || $screen->id !== 'themes' ) return;
     if ( ! current_user_can( 'update_themes' ) ) return;
 
-    $release      = hasta_github_get_release();
-    $current      = $theme->get( 'Version' );
-    $latest       = $release ? ltrim( $release->tag_name, 'v' ) : null;
-    $has_update   = $latest && version_compare( $latest, $current, '>' );
-    $check_url    = wp_nonce_url(
+    $release     = hasta_github_get_release();
+    $current     = wp_get_theme( HASTA_THEME_SLUG )->get( 'Version' );
+    $latest      = $release ? ltrim( $release->tag_name, 'v' ) : null;
+    $has_update  = $latest && version_compare( $latest, $current, '>' );
+    $check_url   = wp_nonce_url(
         add_query_arg( 'hasta_check_update', '1', admin_url( 'themes.php' ) ),
         'hasta_check_update'
     );
-    $release_url  = $release->html_url ?? ( 'https://github.com/' . HASTA_GITHUB_USER . '/' . HASTA_GITHUB_REPO . '/releases' );
+    $release_url = $release->html_url ?? ( 'https://github.com/' . HASTA_GITHUB_USER . '/' . HASTA_GITHUB_REPO . '/releases' );
+    $cache_ttl   = get_option( '_transient_timeout_' . HASTA_UPDATE_CACHE_KEY );
+    $cache_info  = $cache_ttl ? human_time_diff( time(), (int) $cache_ttl ) : null;
 
-    // Hitung sisa waktu cache
-    $cache_ttl    = get_option( '_transient_timeout_' . HASTA_UPDATE_CACHE_KEY );
-    $cache_info   = $cache_ttl ? human_time_diff( time(), (int) $cache_ttl ) : null;
-
+    $type = $has_update ? 'notice-warning' : 'notice-info';
     ?>
-    <tr class="plugin-update-tr active">
-      <td colspan="3" class="plugin-update colspanchange">
-        <div class="update-message notice inline"
-             style="margin:0;padding:8px 14px;display:flex;align-items:center;gap:16px;flex-wrap:wrap;
-                    <?php echo $has_update ? 'border-left-color:#d63638;background:#fcf0f1;' : 'border-left-color:#72aee6;background:#f0f6fc;'; ?>">
+    <div class="notice <?php echo esc_attr( $type ); ?>" style="display:flex;align-items:center;gap:20px;flex-wrap:wrap;padding:10px 14px;">
+      <strong style="font-size:13px;">Hasta Aksara</strong>
 
-          <!-- Status -->
-          <span style="font-size:13px;">
-            <?php if ( $has_update ) : ?>
-              <strong>Update tersedia: v<?php echo esc_html( $latest ); ?></strong>
-              — versi kamu saat ini v<?php echo esc_html( $current ); ?>.
-              <a href="<?php echo esc_url( $release_url ); ?>" target="_blank" rel="noopener noreferrer">Lihat changelog</a>.
-            <?php elseif ( $latest ) : ?>
-              <strong>Hasta Aksara sudah versi terbaru</strong> (v<?php echo esc_html( $current ); ?>).
-            <?php else : ?>
-              <strong>Tidak dapat mengecek update</strong> — pastikan koneksi ke GitHub tersedia.
-            <?php endif; ?>
-          </span>
+      <span style="font-size:13px;">
+        <?php if ( $has_update ) : ?>
+          Update tersedia: <strong>v<?php echo esc_html( $latest ); ?></strong>
+          &mdash; kamu di v<?php echo esc_html( $current ); ?>.
+          <a href="<?php echo esc_url( $release_url ); ?>" target="_blank" rel="noopener noreferrer">Lihat changelog &rarr;</a>
+        <?php elseif ( $latest ) : ?>
+          Versi terbaru — <strong>v<?php echo esc_html( $current ); ?></strong>
+        <?php else : ?>
+          Tidak dapat terhubung ke GitHub.
+        <?php endif; ?>
+      </span>
 
-          <!-- Tombol Periksa Update -->
-          <a href="<?php echo esc_url( $check_url ); ?>"
-             style="font-size:12px;text-decoration:none;color:#2271b1;white-space:nowrap;">
-            ↻ Periksa Update
-            <?php if ( $cache_info ) : ?>
-              <span style="color:#999;font-size:11px;">(cache: <?php echo esc_html( $cache_info ); ?>)</span>
-            <?php endif; ?>
-          </a>
-
-        </div>
-      </td>
-    </tr>
+      <a href="<?php echo esc_url( $check_url ); ?>" style="font-size:12px;text-decoration:none;color:#2271b1;white-space:nowrap;">
+        ↻ Periksa Update<?php if ( $cache_info ) echo ' <span style="color:#999;font-size:11px;">(cache: ' . esc_html( $cache_info ) . ')</span>'; ?>
+      </a>
+    </div>
     <?php
 }
 
