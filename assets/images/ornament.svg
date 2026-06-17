@@ -1,0 +1,41 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 800" fill="none">
+  <!-- Placeholder ornament — ganti via ACF Settings atau upload file ini -->
+
+  <!-- Lingkaran konsentris -->
+  <circle cx="400" cy="400" r="370" stroke="currentColor" stroke-width="0.6" opacity="0.18"/>
+  <circle cx="400" cy="400" r="300" stroke="currentColor" stroke-width="0.6" opacity="0.14"/>
+  <circle cx="400" cy="400" r="230" stroke="currentColor" stroke-width="0.6" opacity="0.12"/>
+  <circle cx="400" cy="400" r="160" stroke="currentColor" stroke-width="0.6" opacity="0.10"/>
+  <circle cx="400" cy="400" r="90"  stroke="currentColor" stroke-width="0.6" opacity="0.10"/>
+  <circle cx="400" cy="400" r="30"  stroke="currentColor" stroke-width="0.6" opacity="0.10"/>
+
+  <!-- Garis diagonal utama (8 arah) -->
+  <line x1="400" y1="30"  x2="400" y2="770" stroke="currentColor" stroke-width="0.5" opacity="0.08"/>
+  <line x1="30"  y1="400" x2="770" y2="400" stroke="currentColor" stroke-width="0.5" opacity="0.08"/>
+  <line x1="119" y1="119" x2="681" y2="681" stroke="currentColor" stroke-width="0.5" opacity="0.07"/>
+  <line x1="681" y1="119" x2="119" y2="681" stroke="currentColor" stroke-width="0.5" opacity="0.07"/>
+  <line x1="400" y1="30"  x2="681" y2="681" stroke="currentColor" stroke-width="0.4" opacity="0.05"/>
+  <line x1="400" y1="30"  x2="119" y2="681" stroke="currentColor" stroke-width="0.4" opacity="0.05"/>
+  <line x1="30"  y1="400" x2="681" y2="119" stroke="currentColor" stroke-width="0.4" opacity="0.05"/>
+  <line x1="30"  y1="400" x2="681" y2="681" stroke="currentColor" stroke-width="0.4" opacity="0.05"/>
+
+  <!-- Bintang 8 sudut -->
+  <polygon
+    points="400,50 442,358 750,400 442,442 400,750 358,442 50,400 358,358"
+    stroke="currentColor" stroke-width="0.7" opacity="0.10" fill="none"/>
+
+  <!-- Bintang 8 sudut dalam -->
+  <polygon
+    points="400,170 426,374 630,400 426,426 400,630 374,426 170,400 374,374"
+    stroke="currentColor" stroke-width="0.7" opacity="0.09" fill="none"/>
+
+  <!-- Petals / rosette 8 -->
+  <ellipse cx="400" cy="235" rx="28" ry="80" stroke="currentColor" stroke-width="0.5" opacity="0.09"/>
+  <ellipse cx="400" cy="235" rx="28" ry="80" stroke="currentColor" stroke-width="0.5" opacity="0.09" transform="rotate(45 400 400)"/>
+  <ellipse cx="400" cy="235" rx="28" ry="80" stroke="currentColor" stroke-width="0.5" opacity="0.09" transform="rotate(90 400 400)"/>
+  <ellipse cx="400" cy="235" rx="28" ry="80" stroke="currentColor" stroke-width="0.5" opacity="0.09" transform="rotate(135 400 400)"/>
+  <ellipse cx="400" cy="235" rx="28" ry="80" stroke="currentColor" stroke-width="0.5" opacity="0.09" transform="rotate(180 400 400)"/>
+  <ellipse cx="400" cy="235" rx="28" ry="80" stroke="currentColor" stroke-width="0.5" opacity="0.09" transform="rotate(225 400 400)"/>
+  <ellipse cx="400" cy="235" rx="28" ry="80" stroke="currentColor" stroke-width="0.5" opacity="0.09" transform="rotate(270 400 400)"/>
+  <ellipse cx="400" cy="235" rx="28" ry="80" stroke="currentColor" stroke-width="0.5" opacity="0.09" transform="rotate(315 400 400)"/>
+</svg>

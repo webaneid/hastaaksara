@@ -1,0 +1,140 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* ─── Design Tokens ─────────────────────────────────────── */
+:root {
+  --color-primary: #F22332;
+  --color-dark:    #1A1A1A;
+  --color-purple:  #7B6FA0;
+}
+
+/* ─── Gontor Font — 16 styles (8 upright + 8 italic) ────── */
+
+@font-face {
+  font-family: 'Gontor';
+  src: url('../../fonts/gontor/woff2/Gontor-Thin.woff2') format('woff2');
+  font-weight: 100;
+  font-style:  normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Gontor';
+  src: url('../../fonts/gontor/woff2/Gontor-ThinItalic.woff2') format('woff2');
+  font-weight: 100;
+  font-style:  italic;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Gontor';
+  src: url('../../fonts/gontor/woff2/Gontor-ExtraLight.woff2') format('woff2');
+  font-weight: 200;
+  font-style:  normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Gontor';
+  src: url('../../fonts/gontor/woff2/Gontor-ExtraLightItalic.woff2') format('woff2');
+  font-weight: 200;
+  font-style:  italic;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Gontor';
+  src: url('../../fonts/gontor/woff2/Gontor-Light.woff2') format('woff2');
+  font-weight: 300;
+  font-style:  normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Gontor';
+  src: url('../../fonts/gontor/woff2/Gontor-LightItalic.woff2') format('woff2');
+  font-weight: 300;
+  font-style:  italic;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Gontor';
+  src: url('../../fonts/gontor/woff2/Gontor-Regular.woff2') format('woff2');
+  font-weight: 400;
+  font-style:  normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Gontor';
+  src: url('../../fonts/gontor/woff2/Gontor-Italic.woff2') format('woff2');
+  font-weight: 400;
+  font-style:  italic;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Gontor';
+  src: url('../../fonts/gontor/woff2/Gontor-Medium.woff2') format('woff2');
+  font-weight: 500;
+  font-style:  normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Gontor';
+  src: url('../../fonts/gontor/woff2/Gontor-MediumItalic.woff2') format('woff2');
+  font-weight: 500;
+  font-style:  italic;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Gontor';
+  src: url('../../fonts/gontor/woff2/Gontor-SemiBold.woff2') format('woff2');
+  font-weight: 600;
+  font-style:  normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Gontor';
+  src: url('../../fonts/gontor/woff2/Gontor-SemiBoldItalic.woff2') format('woff2');
+  font-weight: 600;
+  font-style:  italic;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Gontor';
+  src: url('../../fonts/gontor/woff2/Gontor-Bold.woff2') format('woff2');
+  font-weight: 700;
+  font-style:  normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Gontor';
+  src: url('../../fonts/gontor/woff2/Gontor-BoldItalic.woff2') format('woff2');
+  font-weight: 700;
+  font-style:  italic;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Gontor';
+  src: url('../../fonts/gontor/woff2/Gontor-ExtraBold.woff2') format('woff2');
+  font-weight: 800;
+  font-style:  normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Gontor';
+  src: url('../../fonts/gontor/woff2/Gontor-ExtraBoldItalic.woff2') format('woff2');
+  font-weight: 800;
+  font-style:  italic;
+  font-display: swap;
+}

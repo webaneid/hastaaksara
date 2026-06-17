@@ -1,0 +1,14 @@
+{
+  "name": "hastaaksara",
+  "version": "0.1.0",
+  "description": "Hasta Aksara — Font marketplace WordPress theme",
+  "private": true,
+  "scripts": {
+    "dev":   "tailwindcss -i ./assets/css/input.css -o ./assets/css/style.css",
+    "watch": "tailwindcss -i ./assets/css/input.css -o ./assets/css/style.css --watch",
+    "build": "tailwindcss -i ./assets/css/input.css -o ./assets/css/style.css --minify"
+  },
+  "devDependencies": {
+    "tailwindcss": "^3.4.0"
+  }
+}

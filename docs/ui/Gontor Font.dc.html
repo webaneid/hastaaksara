@@ -1,0 +1,237 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Petrona:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+<style>
+  * { box-sizing: border-box; }
+  html, body { margin: 0; padding: 0; height: 100%; }
+  body { background: #F3EFE4; }
+  @keyframes hkFade { from { opacity: 0; } to { opacity: 1; } }
+</style>
+</helmet>
+
+<div style="position: relative; height: 100vh; width: 100%; overflow: hidden; background: #F3EFE4; color: #1B1813; font-family: 'Petrona', Georgia, 'Times New Roman', serif; -webkit-font-smoothing: antialiased; animation: hkFade .6s ease both;">
+
+  <!-- ===== SLIDING TRACK ===== -->
+  <div style="{{ trackStyle }}">
+
+    <!-- SLIDE 1 — HERO -->
+    <section data-screen-label="Hero" style="flex: 0 0 100vh; height: 100vh; display: flex; flex-direction: column; padding: clamp(112px,14vh,150px) clamp(28px,5vw,64px) clamp(118px,16vh,164px);">
+      <div style="margin: auto 0; max-width: 1120px;">
+        <h1 style="margin: 0; font-family: 'Petrona', Georgia, serif; font-weight: 600; font-size: clamp(54px,9.2vw,116px); line-height: 0.92; letter-spacing: -0.025em;">Gontor Font</h1>
+        <p style="margin: 16px 0 0; font-style: italic; font-weight: 400; font-size: clamp(17px,2vw,23px); letter-spacing: 0.01em; color: #6B6558;">Transitional Serif</p>
+        <div style="display: flex; flex-wrap: wrap; gap: 13px; margin-top: clamp(30px,4.5vh,52px);">
+          <button style="display: inline-flex; align-items: center; gap: 9px; background: #1B1813; color: #F3EFE4; border: 1px solid #1B1813; padding: 14px 24px; border-radius: 999px; font-family: ui-monospace, 'SF Mono', Menlo, Consolas, monospace; font-size: 12px; letter-spacing: 0.1em; text-transform: uppercase; cursor: pointer; transition: all .25s;" style-hover="background: transparent; color: #1B1813;">
+            <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M3 16.5v2.25A2.25 2.25 0 0 0 5.25 21h13.5A2.25 2.25 0 0 0 21 18.75V16.5M16.5 12 12 16.5m0 0L7.5 12m4.5 4.5V3"></path></svg>
+            Download Gontor Serif
+          </button>
+          <button style="display: inline-flex; align-items: center; gap: 9px; background: transparent; color: #1B1813; border: 1px solid rgba(27,24,19,0.28); padding: 14px 24px; border-radius: 999px; font-family: ui-monospace, 'SF Mono', Menlo, Consolas, monospace; font-size: 12px; letter-spacing: 0.1em; text-transform: uppercase; cursor: pointer; transition: all .25s;" style-hover="border-color: #1B1813; background: rgba(27,24,19,0.045);">
+            <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 6.042A8.967 8.967 0 0 0 6 3.75c-1.052 0-2.062.18-3 .512v14.25A8.987 8.987 0 0 1 6 18c2.305 0 4.408.867 6 2.292m0-14.25a8.966 8.966 0 0 1 6-2.292c1.052 0 2.062.18 3 .512v14.25A8.987 8.987 0 0 0 18 18a8.967 8.967 0 0 0-6 2.292m0-14.25v14.25"></path></svg>
+            Type Specimen Book
+          </button>
+        </div>
+      </div>
+    </section>
+
+    <!-- SLIDE 2 — ABOUT -->
+    <section data-screen-label="About" style="flex: 0 0 100vh; height: 100vh; display: flex; flex-direction: column; padding: clamp(112px,14vh,150px) clamp(28px,5vw,64px) clamp(118px,16vh,164px);">
+      <div style="margin: auto 0; width: 100%; max-width: 1180px;">
+        <div style="font-family: ui-monospace, 'SF Mono', Menlo, monospace; font-size: 11px; letter-spacing: 0.22em; text-transform: uppercase; color: #9C9484;">The Typeface</div>
+        <h2 style="margin: 10px 0 0; font-family: 'Petrona', Georgia, serif; font-weight: 600; font-size: clamp(26px,3.4vw,40px); letter-spacing: -0.02em; line-height: 1;">Gontor Font</h2>
+        <div style="height: 1px; background: rgba(27,24,19,0.14); margin: clamp(20px,3vh,30px) 0;"></div>
+        <div style="column-width: 330px; column-gap: clamp(34px,4vw,64px); font-family: 'Petrona', Georgia, serif; font-weight: 400; font-size: clamp(14.5px,1.18vw,17px); line-height: 1.68; color: #2C2820; text-align: justify; hyphens: auto;">
+          <p style="margin: 0 0 1.05em;">Dirancang bukan sekadar sebagai alat komunikasi visual statis, melainkan sebuah prasasti digital yang merekam nilai sejarah peradaban Islam modern di Nusantara. Di dalam ruang arsitektur digitalnya, keluarga rupa huruf ini dibangun di atas fondasi teknis dari Unit per Em (UPM): 1926. Keputusan menetapkan angka metrik dasar ini merupakan bentuk konseptualisasi tipografi yang sakral, merujuk langsung pada tahun 1926 &mdash; momen bersejarah ketika Trimurti (K.H. Ahmad Sahal, K.H. Zainuddin Fananie, dan K.H. Imam Zarkasyi) mengikrarkan berdirinya Pondok Modern Darussalam Gontor di Ponorogo. Dengan mengunci nilai dasar metrik rupa huruf tepat di angka 1926 UPM, setiap goresan koordinat vektor, lekukan bowl, ketebalan stem, dan penataan spasi horizontal di dalam font ini bergetar dalam ritme memori atas babad perjuangan pendidikan dan pembentukan karakter manusia yang disiplin.</p>
+          <p style="margin: 0;">Secara taksonomi tipografi, rupa huruf ini berdiri megah sebagai ekspresi Transitional Serif. Karakteristiknya ditandai oleh kontras ketebalan garis yang tegas namun tetap humanis (modulasi sedang ke tinggi), sumbu putaran geometris (vertical stress) yang tegak lurus mencerminkan nilai keadilan, serta ujung kait mendatar yang ditopang oleh lengkungan halus (bracketed serif) yang melambangkan kelembutan budi pekerti santri. Sebagai jembatan visual antara tradisi klasik pesantren yang abadi (Old Style) dan rasionalitas zaman baru yang dinamis (Modern), struktur transisional dari Gontor Font menyajikan wibawa akademis tingkat tinggi serta keterbacaan (readability) yang luar biasa tangguh untuk kitab, teks keilmuan, maupun media informasi lintas generasi.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- SLIDE 3 — FAMILY MATRIX -->
+    <section data-screen-label="Family Matrix" style="flex: 0 0 100vh; height: 100vh; display: flex; flex-direction: column; padding: clamp(112px,14vh,150px) clamp(28px,5vw,64px) clamp(118px,16vh,164px);">
+      <div style="margin: auto 0; width: 100%; max-width: 1180px;">
+        <div style="display: flex; align-items: flex-end; justify-content: space-between; gap: 24px; flex-wrap: wrap;">
+          <h2 style="margin: 0; font-family: 'Petrona', Georgia, serif; font-weight: 600; font-size: clamp(24px,3.2vw,38px); letter-spacing: -0.02em; line-height: 1;">16 Styles Family Matrix</h2>
+          <div style="text-align: right; font-family: ui-monospace, 'SF Mono', Menlo, monospace; font-size: 10.5px; letter-spacing: 0.14em; color: #6B6558;">
+            <span style="text-transform: uppercase; color: #1B1813;">Ukuran</span> &nbsp;&middot;&nbsp; Spesimen Matrix 48pt
+          </div>
+        </div>
+        <div style="margin-top: clamp(16px,2.6vh,26px);">
+          <div style="display: flex; align-items: baseline; gap: clamp(16px,3vw,40px); padding: clamp(7px,1.3vh,15px) 0; border-top: 1px solid rgba(27,24,19,0.12);">
+            <span style="flex: none; width: 42px; font-family: ui-monospace,'SF Mono',Menlo,monospace; font-size: 12px; color: #9C9484;">100</span>
+            <span style="flex: 1; min-width: 0; font-family: 'Petrona', Georgia, serif; font-weight: 100; font-size: clamp(30px,4.6vw,54px); line-height: 1; letter-spacing: -0.01em; overflow: hidden; text-overflow: ellipsis; white-space: nowrap;">{{ sampleWord }}</span>
+            <span style="flex: none; font-family: ui-monospace,'SF Mono',Menlo,monospace; font-size: 12px; letter-spacing: 0.06em; color: #6B6558; text-align: right;">Thin</span>
+          </div>
+          <div style="display: flex; align-items: baseline; gap: clamp(16px,3vw,40px); padding: clamp(7px,1.3vh,15px) 0; border-top: 1px solid rgba(27,24,19,0.12);">
+            <span style="flex: none; width: 42px; font-family: ui-monospace,'SF Mono',Menlo,monospace; font-size: 12px; color: #9C9484;">200</span>
+            <span style="flex: 1; min-width: 0; font-family: 'Petrona', Georgia, serif; font-weight: 200; font-size: clamp(30px,4.6vw,54px); line-height: 1; letter-spacing: -0.01em; overflow: hidden; text-overflow: ellipsis; white-space: nowrap;">{{ sampleWord }}</span>
+            <span style="flex: none; font-family: ui-monospace,'SF Mono',Menlo,monospace; font-size: 12px; letter-spacing: 0.06em; color: #6B6558; text-align: right;">ExtraLight</span>
+          </div>
+          <div style="display: flex; align-items: baseline; gap: clamp(16px,3vw,40px); padding: clamp(7px,1.3vh,15px) 0; border-top: 1px solid rgba(27,24,19,0.12);">
+            <span style="flex: none; width: 42px; font-family: ui-monospace,'SF Mono',Menlo,monospace; font-size: 12px; color: #9C9484;">300</span>
+            <span style="flex: 1; min-width: 0; font-family: 'Petrona', Georgia, serif; font-weight: 300; font-size: clamp(30px,4.6vw,54px); line-height: 1; letter-spacing: -0.01em; overflow: hidden; text-overflow: ellipsis; white-space: nowrap;">{{ sampleWord }}</span>
+            <span style="flex: none; font-family: ui-monospace,'SF Mono',Menlo,monospace; font-size: 12px; letter-spacing: 0.06em; color: #6B6558; text-align: right;">Light</span>
+          </div>
+          <div style="display: flex; align-items: baseline; gap: clamp(16px,3vw,40px); padding: clamp(7px,1.3vh,15px) 0; border-top: 1px solid rgba(27,24,19,0.12);">
+            <span style="flex: none; width: 42px; font-family: ui-monospace,'SF Mono',Menlo,monospace; font-size: 12px; color: #9C9484;">400</span>
+            <span style="flex: 1; min-width: 0; font-family: 'Petrona', Georgia, serif; font-weight: 400; font-size: clamp(30px,4.6vw,54px); line-height: 1; letter-spacing: -0.01em; overflow: hidden; text-overflow: ellipsis; white-space: nowrap;">{{ sampleWord }}</span>
+            <span style="flex: none; font-family: ui-monospace,'SF Mono',Menlo,monospace; font-size: 12px; letter-spacing: 0.06em; color: #6B6558; text-align: right;">Regular</span>
+          </div>
+          <div style="display: flex; align-items: baseline; gap: clamp(16px,3vw,40px); padding: clamp(7px,1.3vh,15px) 0; border-top: 1px solid rgba(27,24,19,0.12);">
+            <span style="flex: none; width: 42px; font-family: ui-monospace,'SF Mono',Menlo,monospace; font-size: 12px; color: #9C9484;">500</span>
+            <span style="flex: 1; min-width: 0; font-family: 'Petrona', Georgia, serif; font-weight: 500; font-size: clamp(30px,4.6vw,54px); line-height: 1; letter-spacing: -0.01em; overflow: hidden; text-overflow: ellipsis; white-space: nowrap;">{{ sampleWord }}</span>
+            <span style="flex: none; font-family: ui-monospace,'SF Mono',Menlo,monospace; font-size: 12px; letter-spacing: 0.06em; color: #6B6558; text-align: right;">Medium</span>
+          </div>
+          <div style="display: flex; align-items: baseline; gap: clamp(16px,3vw,40px); padding: clamp(7px,1.3vh,15px) 0; border-top: 1px solid rgba(27,24,19,0.12);">
+            <span style="flex: none; width: 42px; font-family: ui-monospace,'SF Mono',Menlo,monospace; font-size: 12px; color: #9C9484;">600</span>
+            <span style="flex: 1; min-width: 0; font-family: 'Petrona', Georgia, serif; font-weight: 600; font-size: clamp(30px,4.6vw,54px); line-height: 1; letter-spacing: -0.01em; overflow: hidden; text-overflow: ellipsis; white-space: nowrap;">{{ sampleWord }}</span>
+            <span style="flex: none; font-family: ui-monospace,'SF Mono',Menlo,monospace; font-size: 12px; letter-spacing: 0.06em; color: #6B6558; text-align: right;">SemiBold</span>
+          </div>
+          <div style="display: flex; align-items: baseline; gap: clamp(16px,3vw,40px); padding: clamp(7px,1.3vh,15px) 0; border-top: 1px solid rgba(27,24,19,0.12);">
+            <span style="flex: none; width: 42px; font-family: ui-monospace,'SF Mono',Menlo,monospace; font-size: 12px; color: #9C9484;">700</span>
+            <span style="flex: 1; min-width: 0; font-family: 'Petrona', Georgia, serif; font-weight: 700; font-size: clamp(30px,4.6vw,54px); line-height: 1; letter-spacing: -0.01em; overflow: hidden; text-overflow: ellipsis; white-space: nowrap;">{{ sampleWord }}</span>
+            <span style="flex: none; font-family: ui-monospace,'SF Mono',Menlo,monospace; font-size: 12px; letter-spacing: 0.06em; color: #6B6558; text-align: right;">Bold</span>
+          </div>
+          <div style="display: flex; align-items: baseline; gap: clamp(16px,3vw,40px); padding: clamp(7px,1.3vh,15px) 0; border-top: 1px solid rgba(27,24,19,0.12); border-bottom: 1px solid rgba(27,24,19,0.12);">
+            <span style="flex: none; width: 42px; font-family: ui-monospace,'SF Mono',Menlo,monospace; font-size: 12px; color: #9C9484;">800</span>
+            <span style="flex: 1; min-width: 0; font-family: 'Petrona', Georgia, serif; font-weight: 800; font-size: clamp(30px,4.6vw,54px); line-height: 1; letter-spacing: -0.01em; overflow: hidden; text-overflow: ellipsis; white-space: nowrap;">{{ sampleWord }}</span>
+            <span style="flex: none; font-family: ui-monospace,'SF Mono',Menlo,monospace; font-size: 12px; letter-spacing: 0.06em; color: #6B6558; text-align: right;">ExtraBold</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+  </div>
+
+  <!-- ===== FIXED CHROME ===== -->
+
+  <!-- Logo (top-left) -->
+  <div onClick="{{ goHero }}" style="position: absolute; top: clamp(26px,3.4vh,40px); left: clamp(28px,5vw,64px); z-index: 40; line-height: 0.9; cursor: pointer;">
+    <div style="font-family: 'Petrona', Georgia, serif; font-weight: 500; font-size: clamp(20px,2.2vw,27px); letter-spacing: -0.01em;">hasta<span style="{{ dotStyle }}">.</span></div>
+    <div style="font-family: 'Petrona', Georgia, serif; font-weight: 500; font-size: clamp(20px,2.2vw,27px); letter-spacing: -0.01em;">aksara</div>
+  </div>
+
+  <!-- IKPM GONTOR (top-right) -->
+  <div style="position: absolute; top: clamp(32px,3.8vh,46px); right: clamp(28px,5vw,64px); z-index: 40; text-align: right; font-family: ui-monospace,'SF Mono',Menlo,monospace; font-size: 10px; letter-spacing: 0.36em; text-transform: uppercase; color: #6B6558;">IKPM&nbsp;&nbsp;GONTOR</div>
+
+  <!-- Right rail nav -->
+  <div style="position: absolute; right: clamp(14px,2.2vw,28px); top: 50%; transform: translateY(-50%); z-index: 40; display: flex; flex-direction: column; align-items: center; gap: 14px;">
+    <button onClick="{{ prev }}" aria-label="Previous" style="width: clamp(40px,2.8vw,48px); height: clamp(40px,2.8vw,48px); border-radius: 50%; border: 1px solid rgba(27,24,19,0.25); background: transparent; color: #1B1813; display: flex; align-items: center; justify-content: center; cursor: pointer; transition: all .25s;" style-hover="background: #1B1813; color: #F3EFE4; border-color: #1B1813;">
+      <svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="m4.5 15.75 7.5-7.5 7.5 7.5"></path></svg>
+    </button>
+    <div style="display: flex; flex-direction: column; align-items: center; gap: 8px; padding: 4px 0;">
+      <button onClick="{{ goHero }}" aria-label="Slide 1" style="{{ dot0Style }}"></button>
+      <button onClick="{{ goAbout }}" aria-label="Slide 2" style="{{ dot1Style }}"></button>
+      <button onClick="{{ goMatrix }}" aria-label="Slide 3" style="{{ dot2Style }}"></button>
+    </div>
+    <button onClick="{{ next }}" aria-label="Next" style="width: clamp(40px,2.8vw,48px); height: clamp(40px,2.8vw,48px); border-radius: 50%; border: 1px solid rgba(27,24,19,0.25); background: transparent; color: #1B1813; display: flex; align-items: center; justify-content: center; cursor: pointer; transition: all .25s;" style-hover="background: #1B1813; color: #F3EFE4; border-color: #1B1813;">
+      <svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="m19.5 8.25-7.5 7.5-7.5-7.5"></path></svg>
+    </button>
+    <div style="margin-top: 4px; font-family: ui-monospace,'SF Mono',Menlo,monospace; font-size: 10.5px; letter-spacing: 0.08em; color: #6B6558;"><span style="color: #1B1813; font-weight: 600;">{{ counter }}</span>&thinsp;/&thinsp;03</div>
+  </div>
+
+  <!-- Footer / license -->
+  <div style="position: absolute; left: 0; right: 0; bottom: 0; z-index: 40; padding: 0 clamp(86px,9vw,128px) clamp(22px,2.8vh,32px) clamp(28px,5vw,64px); display: flex; align-items: flex-end; justify-content: space-between; gap: clamp(24px,4vw,56px);">
+    <div style="max-width: min(62%,660px); font-family: ui-monospace,'SF Mono',Menlo,monospace; font-size: 10px; line-height: 1.6; color: #8A8273;">
+      <div style="color: #6B6558;">This Font Software is licensed under the SIL Open Font License, Version 1.1. This license is available with a FAQ at: <a href="https://scripts.sil.org/OFL" target="_blank" rel="noopener" style="{{ linkStyle }}">scripts.sil.org/OFL</a></div>
+      <div style="margin-top: 7px;">Sesuai dengan piagam hukum Open Font License, piranti lunak rupa huruf Gontor Font ini dilepaskan secara bebas dan terbuka untuk kemaslahatan literasi dunia, pendidikan manusia, serta pengembangan seni desain grafis yang beradab tanpa batasan komersial kaku, sejalan dengan jiwa kebebasan dan pengabdian tanpa pamrih pesantren.</div>
+    </div>
+    <div style="flex: none; text-align: right; font-family: ui-monospace,'SF Mono',Menlo,monospace; font-size: 10px; color: #6B6558;">
+      <div style="text-transform: uppercase; letter-spacing: 0.16em; color: #1B1813;">Base Metrics</div>
+      <div style="margin-top: 4px;">1926 Units per Em (UPM)</div>
+      <div style="margin-top: 14px; font-family: 'Petrona', Georgia, serif; font-size: 16px; letter-spacing: 0.02em; color: #1B1813;">hastaaksara</div>
+    </div>
+  </div>
+
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props="{
+  &quot;$preview&quot;: { &quot;width&quot;: 1280, &quot;height&quot;: 800 },
+  &quot;accentColor&quot;: { &quot;editor&quot;: &quot;color&quot;, &quot;default&quot;: &quot;#B0542F&quot; },
+  &quot;sampleText&quot;: { &quot;editor&quot;: &quot;text&quot;, &quot;default&quot;: &quot;Gontor&quot; }
+}">
+class Component extends DCLogic {
+  state = { slide: 0, lock: false };
+  total = 3;
+
+  go(n) {
+    n = Math.max(0, Math.min(this.total - 1, n));
+    if (n === this.state.slide) return;
+    this.setState({ slide: n, lock: true });
+    clearTimeout(this._t);
+    this._t = setTimeout(() => this.setState({ lock: false }), 760);
+  }
+  next() { this.go(this.state.slide + 1); }
+  prev() { this.go(this.state.slide - 1); }
+
+  componentDidMount() {
+    this._onKey = (e) => {
+      if (e.key === 'ArrowDown' || e.key === 'PageDown' || e.key === ' ') { e.preventDefault(); this.next(); }
+      else if (e.key === 'ArrowUp' || e.key === 'PageUp') { e.preventDefault(); this.prev(); }
+      else if (e.key === 'Home') { e.preventDefault(); this.go(0); }
+      else if (e.key === 'End') { e.preventDefault(); this.go(this.total - 1); }
+    };
+    this._onWheel = (e) => {
+      if (this.state.lock) return;
+      if (Math.abs(e.deltaY) < 14) return;
+      if (e.deltaY > 0) this.next(); else this.prev();
+    };
+    window.addEventListener('keydown', this._onKey);
+    window.addEventListener('wheel', this._onWheel, { passive: true });
+  }
+  componentWillUnmount() {
+    window.removeEventListener('keydown', this._onKey);
+    window.removeEventListener('wheel', this._onWheel);
+    clearTimeout(this._t);
+  }
+
+  dotStyle(i, accent) {
+    const active = this.state.slide === i;
+    return {
+      width: '7px', height: '7px', borderRadius: '50%', padding: 0,
+      border: 'none', cursor: 'pointer',
+      background: active ? accent : 'rgba(27,24,19,0.22)',
+      transform: active ? 'scale(1.25)' : 'scale(1)',
+      transition: 'all .3s ease'
+    };
+  }
+
+  renderVals() {
+    const slide = this.state.slide;
+    const accent = this.props.accentColor ?? '#B0542F';
+    const sampleWord = this.props.sampleText ?? 'Gontor';
+    return {
+      slide,
+      sampleWord,
+      counter: String(slide + 1).padStart(2, '0'),
+      trackStyle: {
+        display: 'flex',
+        flexDirection: 'column',
+        transform: `translateY(-${slide * (100 / this.total)}%)`,
+        transition: 'transform .76s cubic-bezier(.76,0,.18,1)',
+        willChange: 'transform'
+      },
+      dotStyle: { color: accent, fontWeight: 700 },
+      linkStyle: { color: accent, textDecoration: 'none', borderBottom: `1px solid ${accent}` },
+      dot0Style: this.dotStyle(0, accent),
+      dot1Style: this.dotStyle(1, accent),
+      dot2Style: this.dotStyle(2, accent),
+      goHero: () => this.go(0),
+      goAbout: () => this.go(1),
+      goMatrix: () => this.go(2),
+      next: () => this.next(),
+      prev: () => this.prev()
+    };
+  }
+}
+</script>
+</body>
+</html>
