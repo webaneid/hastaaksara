@@ -87,7 +87,7 @@ function hasta_admin_menu() {
 add_action( 'admin_menu', 'hasta_admin_menu' );
 
 function hasta_register_settings() {
-    foreach ( [ 'hasta_logo_right', 'hasta_ornament', 'hasta_tagline_right', 'hasta_instagram' ] as $opt ) {
+    foreach ( [ 'hasta_logo_right', 'hasta_ornament', 'hasta_tagline_right', 'hasta_instagram', 'hasta_footer_copyright' ] as $opt ) {
         register_setting( 'hasta_options', $opt, [ 'sanitize_callback' => 'sanitize_text_field' ] );
     }
 }
@@ -123,10 +123,11 @@ function hasta_admin_enqueue( $hook ) {
 add_action( 'admin_enqueue_scripts', 'hasta_admin_enqueue' );
 
 function hasta_settings_page() {
-    $logo_right   = get_option( 'hasta_logo_right', '' );
-    $ornament     = get_option( 'hasta_ornament', '' );
-    $tagline      = get_option( 'hasta_tagline_right', '' );
-    $instagram    = get_option( 'hasta_instagram', '' );
+    $logo_right          = get_option( 'hasta_logo_right', '' );
+    $ornament            = get_option( 'hasta_ornament', '' );
+    $tagline             = get_option( 'hasta_tagline_right', '' );
+    $instagram           = get_option( 'hasta_instagram', '' );
+    $footer_copyright    = get_option( 'hasta_footer_copyright', '' );
     ?>
     <div class="wrap">
       <h1>Hasta Aksara — Settings</h1>
@@ -200,6 +201,16 @@ function hasta_settings_page() {
             </td>
           </tr>
 
+          <tr>
+            <th scope="row"><label for="hasta_footer_copyright">Teks Copyright</label></th>
+            <td>
+              <input type="text" id="hasta_footer_copyright" name="hasta_footer_copyright"
+                     value="<?php echo esc_attr( $footer_copyright ); ?>"
+                     class="regular-text" placeholder="© <?php echo esc_attr( gmdate('Y') ); ?> Hasta Aksara">
+              <p class="description">Kosongkan untuk menggunakan default: <code>© <?php echo esc_html( gmdate('Y') ); ?> <?php bloginfo('name'); ?></code></p>
+            </td>
+          </tr>
+
         </table>
         <?php submit_button( 'Simpan Settings' ); ?>
       </form>
@@ -248,6 +259,21 @@ function hasta_enqueue_assets() {
     }
 }
 add_action( 'wp_enqueue_scripts', 'hasta_enqueue_assets' );
+
+// ─── Bersihkan <head> dari output WP yang tidak perlu ────────────
+remove_action( 'wp_head', 'feed_links',                       2 ); // RSS feed utama
+remove_action( 'wp_head', 'feed_links_extra',                 3 ); // RSS feed kategori dll
+remove_action( 'wp_head', 'rsd_link'                            ); // Really Simple Discovery
+remove_action( 'wp_head', 'wlwmanifest_link'                    ); // Windows Live Writer
+remove_action( 'wp_head', 'wp_shortlink_wp_head',            10 ); // Shortlink
+remove_action( 'wp_head', 'wp_generator'                        ); // Versi WordPress
+remove_action( 'wp_head', 'rest_output_link_wp_head',        10 ); // REST API link
+remove_action( 'wp_head', 'wp_oembed_add_discovery_links',   10 ); // oEmbed discovery
+remove_action( 'wp_head', 'print_emoji_detection_script',     7 ); // Emoji JS
+remove_action( 'wp_print_styles', 'print_emoji_styles'          ); // Emoji CSS
+remove_action( 'admin_print_scripts', 'print_emoji_detection_script' );
+remove_action( 'admin_print_styles', 'print_emoji_styles'       );
+remove_action( 'wp_head', 'adjacent_posts_rel_link_wp_head', 10 ); // Prev/next post link
 
 // ─── Native Meta Box (fallback jika ACF Pro tidak aktif) ──
 function hasta_register_font_metabox() {

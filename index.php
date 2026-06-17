@@ -108,11 +108,6 @@ if ( $has_font ) {
       <div class="flex-none text-right">
         <p class="font-mono text-[16px] font-bold tracking-[0.15em] uppercase text-dark mb-1">Units per Em (UPM)</p>
         <p class="font-mono text-[16px] text-dark/40"><?php echo esc_html( $font_upm ); ?></p>
-        <?php if ( $font_foundry ) : ?>
-          <p class="font-mono text-[16px] tracking-[0.2em] uppercase text-dark/30 mt-4">
-            <?php echo esc_html( $font_foundry ); ?>
-          </p>
-        <?php endif; ?>
       </div>
       <?php endif; ?>
 
